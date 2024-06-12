@@ -5,11 +5,11 @@ service=$1
 systemctl status > /dev/null 2> /dev/null
 if [ $? -eq 0 ] 
 then 
- STATUS="$(systemctl is-active $service)"
- RUNNING="$(systemctl show -p SubState $service | cut -d'=' -f2)"
- if [ "${STATUS}" = "active" ]; then
+ status="$(systemctl is-active $service)"
+ running="$(systemctl show -p SubState $service | cut -d'=' -f2)"
+ if [ "${status}" = "active" ]; then
  echo "$service Service is Active"
- if [ "${RUNNING}" = "running" ]; then
+ if [ "${running}" = "running" ]; then
  echo "$service Service is Running"
  else
  echo "$service Service Not Running"

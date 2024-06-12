@@ -20,7 +20,7 @@ then
  fi
 # If systemctl does not exist use ps instead.
 else
- i=$(ps -eaf | grep -i $service |sed '/^$/d'| wc -l)
+ i=$(ps -eaf | grep -i $service | sed '/^$/d' | wc -l)
  if [ $i > 0 ]
  then
    echo "$service Service is Running"

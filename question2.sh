@@ -1,6 +1,6 @@
 #!/bin/bash
-#script to recursively travel a dir of n levels
 
+# traverse directory recursively and note down every file extention encountered.
 traverse() {
 for file in "$1"/*
 do
@@ -14,10 +14,11 @@ do
 done
 
 }
-
+# run traversal and format the output correctly
 main() {
 traverse "$1"
-counts=$(echo "$extentionslist" | sort -n | sed '/^$/d' | uniq -c | awk '{print "There are " $1 " files of type " $2}')
+echo -e "Extention \t Count"
+counts=$(echo -e "$extentionslist" | sort -n | sed '/^$/d' | uniq -c | awk '{print  $2 " \t \t " $1}')
 echo "$counts"
 }
 
